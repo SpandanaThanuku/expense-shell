@@ -22,4 +22,4 @@ systemctl restart backend
 
 dnf install mysql -y
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql-dev.tsdevops25.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
