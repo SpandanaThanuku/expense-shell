@@ -1,4 +1,4 @@
-&>>$log_file=/tmp/expense.log
+log_file=/tmp/expense.log
 echo -e "\e[35m disable default version of NodeJS\e[0m"
 dnf module disable nodejs -y &>>&>>$log_file
 
