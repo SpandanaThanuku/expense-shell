@@ -3,7 +3,7 @@ log_file=/tmp/expense.log
 
 #declaring function
 head() {
-  echo -e "\e[35m$1\e[0m""
+  echo -e "\e[35m$1\e[0m"
 }
 
 head "disable default version of NodeJS"
@@ -47,6 +47,5 @@ systemctl restart backend &>>$log_file
 head "MYSQL client"
 dnf install mysql -y &>>$log_file &>>$log_file
 
-head "Load_schema
+head "Load_schema"
 mysql -h mysql-dev.tsdevops25.online -uroot -p${MYSQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
-
