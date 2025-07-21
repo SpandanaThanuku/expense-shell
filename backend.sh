@@ -47,5 +47,6 @@ systemctl restart backend &>>$log_file
 head "MYSQL client"
 dnf install mysql -y &>>$log_file &>>$log_file
 
-head "Load schema"
+head "Load_schema
 mysql -h mysql-dev.tsdevops25.online -uroot -p${MYSQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
+
