@@ -2,7 +2,7 @@ log_file=/tmp/expense.log
 
 #declaring function
 head() {
-  echo -e "\e[35m$?\e[0m"
+  echo -e "\e[35m$1\e[0m"
 }
 
 head "Installing nginx"
