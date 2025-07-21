@@ -1,10 +1,6 @@
 MYSQL_PASSWORD=$1 # declaring special Variable
 log_file=/tmp/expense.log
-
-#declaring function
-head() {
-  echo -e "\e[35m$1\e[0m"
-}
+source common.sh
 
 head "disable default version of NodeJS"
 dnf module disable nodejs -y &>>$log_file
@@ -45,7 +41,7 @@ systemctl enable backend &>>$log_file
 systemctl restart backend &>>$log_file
 
 head "MYSQL client"
-dnf install mysql -y &>>$log_file &>>$log_file
+dnf install mysql -y &>>$log_file
 
 head "Load_schema"
 mysql -h mysql-dev.tsdevops25.online -uroot -p${MYSQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
