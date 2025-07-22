@@ -22,7 +22,7 @@ Stat $?
 head "Adding Application user"
 
 id expense &>>$log_file
-if [ $? -ne 0 ]; then
+if [ "$?" -ne 0 ]; then
   useradd expense &>>$log_file
 fi
 Stat $?

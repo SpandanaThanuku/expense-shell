@@ -8,19 +8,19 @@ App_Prereq() {
 DIR=$1
 head "removing /app content"
 rm -rf $1 &>>$log_file
-echo $?
+Stat $?
 
 head "creating app directory"
 mkdir $1 &>>$log_file
-echo $?
+Stat $?
 
 head "download"
 curl -o /tmp/${component}zip https://expense-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
-echo $?
+Stat $?
 
 head "changing directory to /app"
 cd $1
-echo $?
+Stat $?
 
 head "extracting files"
 unzip /tmp/${component}.zip &>>$log_file
