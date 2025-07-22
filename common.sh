@@ -26,3 +26,12 @@ head "extracting files"
 unzip /tmp/${component}.zip &>>$log_file
 echo $?
 }
+
+Stat() {
+  if [ "$1" -ne 0 ]; then
+    echo SUCCESS
+    else
+    echo FAILURE
+      exit 1
+  fi
+}

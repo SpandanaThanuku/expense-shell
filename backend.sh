@@ -5,39 +5,39 @@ source common.sh
 
 head "disable default version of NodeJS"
 dnf module disable nodejs -y &>>$log_file
-echo $?
+Stat $?
 
 head "enable nodeJS 18 version"
 dnf module enable nodejs:18 -y &>>$log_file
-echo $?
+Stat $?
 
 head "installing NodeJS"
 dnf install nodejs -y &>>$log_file
-echo $?
+Stat $?
 
 head "configure backend service"
 cp backend.service /etc/systemd/system/backend.service &>>$log_file
-echo $?
+Stat $?
 
 head "Adding Application user"
 useradd expense &>>$log_file
-echo $?
+Stat $?
 
 App_Prereq /add
 
 head "downloading Application dependencies"
 npm install &>>$log_file
-echo $?
+Stat $?
 
 head "reloading systemd and starting backend services"
 systemctl daemon-reload &>>$log_file
 systemctl enable backend &>>$log_file
 systemctl restart backend &>>$log_file
-echo $?
+Stat $?
 
 head "MYSQL client"
 dnf install mysql -y &>>$log_file
-echo $?
+Stat $?
 
 head "Load_schema"
 mysql -h mysql-dev.tsdevops25.online -uroot -p${MYSQL_PASSWORD} < /app/schema/backend.sql &>>$log_file
