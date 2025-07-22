@@ -1,5 +1,5 @@
 #log_file=/tmp/expense.log
-
+component=frontend
 source common.sh
 
 head "Installing nginx"
@@ -10,23 +10,7 @@ head "copying config files"
 cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
 echo $?
 
-
-head "removing old/default content"
-rm -rf /usr/share/nginx/html/* &>>$log_file
-echo $?
-
-head "downloading frontend code"
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip &>>$log_file
-echo $?
-
-cd /usr/share/nginx/html &>>$log_file
-echo $?
-
-
-head "extracting the code"
-unzip /tmp/frontend.zip &>>$log_file
-
-echo $?
+App_Prereq /usr/share/nginx/html/*
 
 head "enabling nginx"
 systemctl enable nginx &>>$log_file

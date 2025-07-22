@@ -1,5 +1,6 @@
 MYSQL_PASSWORD=$1 # declaring special Variable
 ###log_file=/tmp/expense.log
+component=backend
 source common.sh
 
 head "disable default version of NodeJS"
@@ -22,25 +23,7 @@ head "Adding Application user"
 useradd expense &>>$log_file
 echo $?
 
-head "removing /app content"
-rm -rf /app &>>$log_file
-echo $?
-
-head "creating app directory"
-mkdir /app &>>$log_file
-echo $?
-
-head "download"
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file
-echo $?
-
-head "changing directory to /app"
-cd /app
-echo $?
-
-head "extracting files"
-unzip /tmp/backend.zip &>>$log_file
-echo $?
+App_Prereq /add
 
 head "downloading Application dependencies"
 npm install &>>$log_file
