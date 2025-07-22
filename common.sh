@@ -24,7 +24,7 @@ Stat $?
 
 head "extracting files"
 unzip /tmp/${component}.zip &>>$log_file
-echo $?
+Stat $?
 }
 
 Stat() {
