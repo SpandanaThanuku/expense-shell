@@ -1,6 +1,12 @@
 MYSQL_PASSWORD=$1 # declaring special Variable
 ###log_file=/tmp/expense.log
 component=backend
+
+if [ -z "MYSQL_PASSWORD" ]; then
+  echo Input MYSQL_PASSWORD is missing
+  exit 1
+fi
+
 source common.sh
 
 head "disable default version of NodeJS"
