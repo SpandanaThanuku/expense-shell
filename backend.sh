@@ -1,7 +1,7 @@
 MYSQL_PASSWORD=$1 # declaring special Variable
 ###log_file=/tmp/expense.log
 
-if [ -z MYSQL_PASSWORD ]; then
+if [ -z "$MYSQL_PASSWORD" ]; then
   echo Input MYSQL_PASSWORD is missing
   exit 1
 fi
